@@ -15,3 +15,11 @@ exports.create = function (request, response, next) {
 	response.send({ result: true });
 	idno++;
 };
+
+exports.show = function (request, response, next) {
+	const booklistitem = booklist.find((book) => book.id == request.params.id);
+	if (!booklistitem) {
+		return next(createError(404, "There is no book with that id"));
+	}
+	response.send(booklistitem);
+};
