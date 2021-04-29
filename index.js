@@ -1,11 +1,11 @@
 const express = require("express");
-const booklist = express();
+const app = express();
 const port = 3000;
 const router = require("./router");
 
-booklist.use(express.json());
-booklist.use(router);
+app.use(express.json());
+app.use(router);
 
-booklist.listen(port, () =>
+app.listen(port, () =>
 	console.log(`Book list listening at http://localhost:${port}`)
 );
