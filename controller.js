@@ -23,3 +23,12 @@ exports.show = function (request, response, next) {
 	}
 	response.send(booklistitem);
 };
+
+exports.delete = function (request, response, next) {
+	const booklistitem = booklist.find((book) => book.id == request.params.id);
+	if (!booklistitem) {
+		return next(createError(404, "There is no book with that id"));
+	}
+	booklist = booklist.filter((book) => book.id != request.params.id);
+	response.send({ result: true });
+};
