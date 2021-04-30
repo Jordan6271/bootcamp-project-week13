@@ -4,7 +4,7 @@ let booklist = [];
 let idNumber = 0;
 
 exports.index = function (_, response) {
-	response.send(booklist);
+	response.json(booklist);
 };
 
 exports.create = function (request, response, next) {
@@ -24,7 +24,7 @@ exports.create = function (request, response, next) {
 		author: request.body.author,
 		read: request.body.read,
 	});
-	response.send({ result: true });
+	response.json({ result: true });
 	idNumber++;
 };
 
@@ -33,7 +33,7 @@ exports.show = function (request, response, next) {
 	if (!booklistitem) {
 		return next(createError(404, `There is no book with that id`));
 	}
-	response.send(booklistitem);
+	response.json(booklistitem);
 };
 
 exports.delete = function (request, response, next) {
@@ -42,7 +42,7 @@ exports.delete = function (request, response, next) {
 		return next(createError(404, `There is no book with that id`));
 	}
 	booklist = booklist.filter((book) => book.id != request.params.id);
-	response.send({ result: true });
+	response.json({ result: true });
 };
 
 exports.update = function (request, response, next) {
@@ -67,5 +67,5 @@ exports.update = function (request, response, next) {
 		}
 		return book;
 	});
-	response.send({ result: true });
+	response.json({ result: true });
 };
