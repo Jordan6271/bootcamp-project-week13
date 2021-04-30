@@ -15,8 +15,10 @@ exports.create = function (request, response, next) {
 	if (!request.body.author) {
 		return next(createError(400, `Author of book is required`));
 	}
-	if (!request.body.read) {
-		return next(createError(400, `Read status of book is required`));
+	if (typeof request.body.read !== "boolean") {
+		return next(
+			createError(400, `Read status of book must be a boolean value`)
+		);
 	}
 	booklist.push({
 		id: idNumber,
@@ -53,8 +55,10 @@ exports.update = function (request, response, next) {
 	if (!request.body.author) {
 		return next(createError(400, `Author of book is required`));
 	}
-	if (!request.body.read) {
-		return next(createError(400, `Read status of book is required`));
+	if (typeof request.body.read !== "boolean") {
+		return next(
+			createError(400, `Read status of book must be a boolean value`)
+		);
 	}
 	if (!booklistitem) {
 		return next(createError(404, `There is no book with that id`));
