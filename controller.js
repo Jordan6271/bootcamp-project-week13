@@ -3,32 +3,50 @@ const createError = require("http-errors");
 let booklist = [];
 let idno = 0;
 
-exports.index = function (request, response) {
-	response.send(booklist);
+exports.index = function (_, res) {
+	res.send(booklist);
 };
 
-exports.create = function (request, response, next) {
-	if (!request.body.name) {
-		return next(createError(400, "Name of the book is required"));
+exports.create = function (req, res, next) {
+	console.log(req.body);
+	if (!req.body.name) {
+		return next(createError(400, `Name of book is required`));
 	}
-	booklist.push({ id: idno, name: request.body.name });
-	response.send({ result: true });
+	booklist.push({ id: idno, name: req.body.name });
+	res.send({ result: true });
 	idno++;
 };
 
-exports.show = function (request, response, next) {
-	const booklistitem = booklist.find((book) => book.id == request.params.id);
+exports.show = function (req, res, next) {
+	const booklistitem = booklist.find((book) => book.id == req.params.id);
 	if (!booklistitem) {
-		return next(createError(404, "There is no book with that id"));
+		return next(createError(404, `There is no book with that id`));
 	}
-	response.send(booklistitem);
+	res.send(booklistitem);
 };
 
-exports.delete = function (request, response, next) {
-	const booklistitem = booklist.find((book) => book.id == request.params.id);
+exports.delete = function (req, res, next) {
+	const booklistitem = booklist.find((book) => book.id == req.params.id);
 	if (!booklistitem) {
-		return next(createError(404, "There is no book with that id"));
+		return next(createError(404, `There is no book with that id`));
 	}
-	booklist = booklist.filter((book) => book.id != request.params.id);
-	response.send({ result: true });
+	booklist = booklist.filter((book) => book.id != req.params.id);
+	res.send({ result: true });
+};
+
+exports.update = function (req, res, next) {
+	const booklistitem = booklist.find((book) => book.id == req.params.id);
+	if (!req.body.name) {
+		return next(createError(400, `Name of book is required`));
+	}
+	if (!booklistitem) {
+		return next(createError(404, `There is no book with that id`));
+	}
+	booklist = booklist.map((book) => {
+		if (book.id == req.params.id) {
+			book.name = req.body.name;
+		}
+		return book;
+	});
+	res.send({ result: true });
 };
