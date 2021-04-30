@@ -8,7 +8,6 @@ exports.index = function (_, response) {
 };
 
 exports.create = function (request, response, next) {
-	console.log(request.body);
 	if (!request.body.title) {
 		return next(createError(400, `Title of book is required`));
 	}
