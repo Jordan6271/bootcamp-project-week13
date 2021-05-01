@@ -11,5 +11,17 @@
         "ecmaVersion": 12
     },
     "rules": {
+        "indent": ["error", "tab", { "ignoreComments": true }],
+        "no-tabs": 0,
+        "eqeqeq": 0,
+        "quotes": ["error", "backtick"],
+        "linebreak-style": 0,
+        "no-plusplus": 0,
+        "no-param-reassign": 0,
+        "consistent-return": 0,
+        "func-names": 0,
+        "comma-dangle": 0,
+        "implicit-arrow-linebreak": 0,
+        "function-paren-newline": 0
     }
 }

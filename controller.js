@@ -1,4 +1,4 @@
-const createError = require("http-errors");
+const createError = require(`http-errors`);
 
 let booklist = [];
 let idNumber = 0;
@@ -9,14 +9,12 @@ exports.index = function (_, response) {
 
 exports.create = function (request, response, next) {
 	if (!request.body.title) {
-		return next(
-			createError(400, `Title of book is required`, { expose: true })
-		);
+		return next(createError(400, `Title of book is required`));
 	}
 	if (!request.body.author) {
 		return next(createError(400, `Author of book is required`));
 	}
-	if (typeof request.body.read !== "boolean") {
+	if (typeof request.body.read !== `boolean`) {
 		return next(
 			createError(400, `Read status of book must be a boolean value`)
 		);
@@ -56,7 +54,7 @@ exports.update = function (request, response, next) {
 	if (!request.body.author) {
 		return next(createError(400, `Author of book is required`));
 	}
-	if (typeof request.body.read !== "boolean") {
+	if (typeof request.body.read !== `boolean`) {
 		return next(
 			createError(400, `Read status of book must be a boolean value`)
 		);
@@ -66,9 +64,9 @@ exports.update = function (request, response, next) {
 	}
 	booklist = booklist.map((book) => {
 		if (book.id == request.params.id) {
-			(book.title = request.body.title),
-				(book.author = request.body.author),
-				(book.read = request.body.read);
+			(book.title = request.body.title)(
+				(book.author = request.body.author)
+			)((book.read = request.body.read));
 		}
 		return book;
 	});
