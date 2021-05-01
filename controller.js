@@ -9,7 +9,9 @@ exports.index = function (_, response) {
 
 exports.create = function (request, response, next) {
 	if (!request.body.title) {
-		return next(createError(400, `Title of book is required`));
+		return next(
+			createError(400, `Title of book is required`, { expose: true })
+		);
 	}
 	if (!request.body.author) {
 		return next(createError(400, `Author of book is required`));
