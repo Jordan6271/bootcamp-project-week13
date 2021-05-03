@@ -3,22 +3,22 @@
 ## Endpoints are as follows:
 
 ### GET Requests, exports.index:
-/books
+- /books
 
 ### POST Requests, exports.create:
-/books/add-book
+- /books/add-book
 
 ### GET Requests, exports.show:
-/books/id=:id
-/books/title=:title
-/books/author=:author
+- /books/id=:id
+- /books/title=:title
+- /books/author=:author
 
 ### DELETE Requests, exports.delete:
-/books/id=:id
-/books/title=:title
-/books/author=:author
+- /books/id=:id
+- /books/title=:title
+- /books/author=:author
 
 ### PUT Requests, exports.update:
-/books/id=:id
-/books/title=:title
-/books/author=:author
+- /books/id=:id
+- /books/title=:title
+- /books/author=:author
