@@ -2,32 +2,28 @@
 
 ## URL is as follows:
 
--   https://bootcamp-week13-booklist.herokuapp.com/
+-   https://bootcamp-week13-booklist.herokuapp.com/books
 
 ## Endpoints are as follows:
 
-### GET Requests, exports.index:
-
--   /books
-
 ### POST Requests, exports.create:
 
--   /books/add-book
+-   /add-book
 
 ### GET Requests, exports.show:
 
--   /books/id=:id
--   /books/title=:title
--   /books/author=:author
+-   /id=:id
+-   /title=:title
+-   /author=:author
 
 ### DELETE Requests, exports.delete:
 
--   /books/id=:id
--   /books/title=:title
--   /books/author=:author
+-   /id=:id
+-   /title=:title
+-   /author=:author
 
 ### PUT Requests, exports.update:
 
--   /books/id=:id
--   /books/title=:title
--   /books/author=:author
+-   /id=:id
+-   /title=:title
+-   /author=:author
