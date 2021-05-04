@@ -1,5 +1,9 @@
 # bootcamp-project-week13
 
+## URL is as follows:
+
+-   https://bootcamp-week13-booklist.herokuapp.com/
+
 ## Endpoints are as follows:
 
 ### GET Requests, exports.index:
