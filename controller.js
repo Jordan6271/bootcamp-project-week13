@@ -132,7 +132,6 @@ exports.update = function (request, response, next) {
     }
     if (booklistTitle) {
         booklist = booklist.map((book) => {
-            console.log(book);
             if (book.title == request.params.title) {
                 book.title = request.body.title;
                 book.author = request.body.author;
@@ -142,7 +141,6 @@ exports.update = function (request, response, next) {
         });
     } else if (booklistAuthor) {
         booklist = booklist.map((book) => {
-            console.log(book);
             if (book.author == request.params.author) {
                 book.title = request.body.title;
                 book.author = request.body.author;
@@ -152,7 +150,6 @@ exports.update = function (request, response, next) {
         });
     } else {
         booklist = booklist.map((book) => {
-            console.log(book);
             if (book.id == request.params.id) {
                 book.title = request.body.title;
                 book.author = request.body.author;
